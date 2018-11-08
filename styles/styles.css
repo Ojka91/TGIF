@@ -1,0 +1,28 @@
+.logo{
+    height: 100px;
+}
+
+body{
+    }
+
+.icon{
+    height: 50px;
+}
+
+footer{
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+   
+    
+}
+
+.header{
+ 
+}
+
+.firstsect{
+  
+    padding-bottom: 20px;
+    padding: 10px;
+}
