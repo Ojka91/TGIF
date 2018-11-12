@@ -26,3 +26,16 @@ footer{
     padding-bottom: 20px;
     padding: 10px;
 }
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.checkboxes{
+    display: flex;
+flex-wrap: wrap;
+    justify-content: space-around;
+}

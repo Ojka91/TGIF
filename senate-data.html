@@ -68,12 +68,17 @@
                 </div>
             </div>
 
-            <div class="checkboxes">
-                <input type="checkbox" name="party" value="democrat" id="d" > Democrat
-                <input type="checkbox" name="party" value="republican" id="r"> Republican
-                <input type="checkbox" name="party" value="independent" id="i" >Independent
-
+            <div class="checkboxes" class="flex">
+               <div> <input type="checkbox" name="party" value="democrat" id="d"> Democrat</div>
+               <div> <input type="checkbox" name="party" value="republican" id="r"> Republican</div>
+                 <div>  <input type="checkbox" name="party" value="independent" id="i">Independent</div> 
+                <div class="flex"> <label for="states">States</label>
+                    <select name="states" id="states">
+                        <option></option>
+                    </select>
+                </div>
             </div>
+
 
             <table id="maintable" class="table table-hover ">
                 <thead>
