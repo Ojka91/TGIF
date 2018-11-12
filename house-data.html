@@ -17,11 +17,11 @@
     <div class="container">
         <div class="header">
             <div class="container py-5">
-                <div class="row">
-                    <div class="col-1"><img class="icon" src="styles/assets/icon01.png"></div>
-                    <div class="col-2"><a href="home.html" class="display-4">TGIF</a></div>
-                    <div class="col-1"><img class="logo" src="styles/assets/logo.png"></div>
-                    <div class="col-5"></div>
+                <div class="row flex">
+                    <div class="col-2"><img class="logo" src="styles/assets/logo.png"></div>
+                    <div class="col-2"><a href="home.html" class="display-4 header" >TGIF</a></div>
+                    <div class="col-1"></div>
+                    <div class="col-4"></div>
                     <div class="col-1"><img class="icon" src="styles/assets/icon02.png"></div>
                     <div class="col-1"> <a href="mailto:info@tgif.net" >info@tgif.net</a></div>
 
@@ -62,12 +62,12 @@
                 <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
                 
                 <div class="checkboxes" class="flex">
-               <div> <input type="checkbox" name="party" value="democrat" id="d"> Democrat</div>
-               <div> <input type="checkbox" name="party" value="republican" id="r"> Republican</div>
-                 <div>  <input type="checkbox" name="party" value="independent" id="i">Independent</div> 
-                <div class="flex"> <label for="states">States</label>
-                    <select name="states" id="states">
-                        <option></option>
+               <div class="flex"> <input type="checkbox" name="party" value="democrat" id="d"> Democrat</div>
+               <div class="flex"> <input type="checkbox" name="party" value="republican" id="r"> Republican</div>
+                 <div class="flex">  <input type="checkbox" name="party" value="independent" id="i">Independent</div> 
+                <div class="flex"> <label for="states" class="flex">States</label>
+                    <select class="flex" name="states" id="states">
+                        <option value="All" selected>All</option>
                     </select>
                 </div>
             </div>

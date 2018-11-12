@@ -53,7 +53,7 @@ function filter(member){
     var select = document.getElementById("states");
     
     var partyFilter = false;
-    var checkboxFilter = false;
+    var dropdownFilter = false;
     
      if (member.party == "D" && array[0] == true) {
         partyFilter= true;
@@ -73,20 +73,20 @@ function filter(member){
     }
     
     if (member.state == select.value){
-        checkboxFilter = true;
+        dropdownFilter = true;
 
         }
     if (array[0] == false && array[1] == false & array[2] == false ){
         partyFilter = true;
     }
-    if (select.value==""){
-        checkboxFilter = true;
+    if (select.value=="All"){
+        dropdownFilter = true;
     }
     if (select.value == member.state){
-        checkboxFilter = true;
+        dropdownFilter = true;
     }
     
-    if (checkboxFilter == true && partyFilter == true){
+    if (dropdownFilter == true && partyFilter == true){
         return true;
     }
     
