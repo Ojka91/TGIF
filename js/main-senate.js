@@ -1,13 +1,15 @@
+//------------------------------------------
 //creation of dropdown menu for filtering
 
 var states = [];
+
 function dropDownStates(array) {
-    
+
 
     for (var x = 0; x < array.length; x++) {
         for (var y = x + 1; y < array.length; y++) {
             if (array[x].state == array[y].state) {
-                
+
                 if (!states.includes(array[x].state)) {
                     states.push(array[x].state);
                 }
@@ -22,9 +24,11 @@ function dropDownStates(array) {
         option.append(states[j]);
         dropMenu.append(option);
     }
-    
+
 }
 dropDownStates(data.results[0].members);
+
+//------------------------------------------
 
 
 
@@ -33,7 +37,7 @@ dropDownStates(data.results[0].members);
 
 //---------------------------
 
-//engage the function onclick
+//engage the function onclick, or on change
 document.getElementById("d").addEventListener("click", tableMembers);
 document.getElementById("i").addEventListener("click", tableMembers);
 document.getElementById("r").addEventListener("click", tableMembers);
@@ -48,47 +52,42 @@ function filter(member) {
     var i = document.getElementById("i").checked;
     var array = [d, r, i];
     var select = document.getElementById("states");
-    
-    var partyFilter=false;
-    var checkboxFilter=false;
+
+    var partyFilter = false;
+    var checkboxFilter = false;
 
     if (member.party == "D" && array[0] == true) {
-        partyFilter= true;
+        partyFilter = true;
     }
 
 
     if (member.party == "R" && array[1] == true) {
-        partyFilter=true;
+        partyFilter = true;
     }
 
     if (member.party == "I" && array[2] == true) {
-        partyFilter= true;
+        partyFilter = true;
     }
 
     if (array[0] == false && array[1] == false & array[2] == false) {
-        partyFilter= true;
-    }
-    
-    if (member.state == select.value){
-        checkboxFilter = true;
-
-        }
-    if (array[0] == false && array[1] == false & array[2] == false ){
         partyFilter = true;
     }
-    if (select.value==""){
+
+    if (member.state == select.value) {
+        checkboxFilter = true;
+
+    }
+
+    if (select.value == "") {
         checkboxFilter = true;
     }
-    if (select.value == member.state){
-        checkboxFilter = true;
-    }
-    
-    if (checkboxFilter == true && partyFilter == true){
+
+    if (checkboxFilter == true && partyFilter == true) {
         return true;
     }
-    
-   
-    
+
+
+
 }
 
 
@@ -173,7 +172,7 @@ function tableMembers() {
         newTr.append(newTd5);
         var tabBody = document.getElementById("tbody");
 
-        //this send the tr it's active to filter function
+        //this send the active tr to filter function
 
         if (filter(data.results[0].members[x])) {
             tabBody.append(newTr);
@@ -187,10 +186,3 @@ function tableMembers() {
 }
 tableMembers();
 
-
-//this function does the same as the filter one, but shorter way
-//    var array = Array.from(document.querySelectorAll("input[name=party]:checked")).map(cb => cb.value);
-//
-//    if(array.includes(member.party) || array.length==0){
-//        return true;
-//    }
