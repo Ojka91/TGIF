@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="container py-5">
+                <div class="row flex">
+                    <div class="col-2"><img class="logo" src="styles/assets/logo.png"></div>
+                    <div class="col-2"><a href="home.html" class="display-4">TGIF</a></div>
+                    <div class="col-1"></div>
+                    <div class="col-4"></div>
+                    <div class="col-1"><img class="icon" src="styles/assets/icon02.png"></div>
+                    <div class="col-1"> <a href="mailto:info@tgif.net">info@tgif.net</a></div>
+
+
+
+
+
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div>
+                    <!-- Brand -->
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Congres 113
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="senate-data.html">Senate</a>
+                                <a class="dropdown-item" href="house-data.html">House</a> </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Attendance</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="senate_attendance_statistics.html">Senate</a>
+                                <a class="dropdown-item" href="house_attendance_statistics.html">House</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Loyalty</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="senate_party_loyality_statistics.html">Senate</a>
+                                <a class="dropdown-item" href="house_party_loyality_statistics.html">House</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!--Table container-->
+        <div class="row">
+            <div class="col-6">
+                <h2>House Party Loyality</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto fugit beatae, doloremque, hic necessitatibus aperiam consequatur eum numquam. At consequuntur quisquam laborum impedit animi quis, vitae cumque sed odio velit?
+                </p>
+            </div>
+
+            <div class="col-6">
+                <table id="maintable" class="table table-hover ">
+                    <caption>House at Glance</caption>
+                    <thead>
+
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Party</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance_glance">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <table id="maintable" class="table table-hover ">
+                    <caption>Most Loyal (top 10%)</caption>
+                    <thead>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Number party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mostloyal">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <table id="maintable" class="table table-hover ">
+                    <caption>Least Loyal (top 10%)</caption>
+                    <thead>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Number party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leastloyal">
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+
+
+        <footer>
+            <p>&copy; 2018 TGIF || All rights Reserved</p>
+        </footer>
+       
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+    
+    <script src="js/house.js"></script>
+    <script src="js/house_statistics.js"></script>
+</body>
+
+</html>
