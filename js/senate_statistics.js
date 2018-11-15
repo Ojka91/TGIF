@@ -59,7 +59,7 @@ tableMostEngaged();
 tableLeastEngaged();
     }
 
-if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/senate_party_loyality_statistics.html" ){
+if (window.location.pathname == "/senate_party_loyality_statistics.html" ){
 tableMostLoyal();
 tableLeastLoyal();
     }

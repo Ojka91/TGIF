@@ -52,14 +52,14 @@ most_engaged();
 most_loyal();
 least_loyal();
 glanceTable();
-if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/house_attendance_statistics.html"){
+if (window.location.pathname == "/house_attendance_statistics.html"){
     
 
 tableMostEngaged();
 tableLeastEngaged();
     }
 
-if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/house_party_loyality_statistics.html" ){
+if (window.location.pathname == "/house_party_loyality_statistics.html" ){
 tableMostLoyal();
 tableLeastLoyal();
     }
