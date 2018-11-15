@@ -52,14 +52,14 @@ most_engaged();
 most_loyal();
 least_loyal();
 glanceTable();
-if (window.location.pathname == "/senate_attendance_statistics.html"){
+if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/house_attendance_statistics.html"){
     
 
 tableMostEngaged();
 tableLeastEngaged();
     }
 
-if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/senate_party_loyality_statistics.html" ){
+if (document.location.pathname == "/home/oscar/Desktop/Ubiqum/Module%202/Task_3/Main/house_party_loyality_statistics.html" ){
 tableMostLoyal();
 tableLeastLoyal();
     }
@@ -124,8 +124,11 @@ function votesWParty() {
 
     statistics.glance[0].party[0].percentage_voted = votesDem / senate_democrats.length;
     statistics.glance[0].party[1].percentage_voted = votesRep / senate_republicans.length;
-    statistics.glance[0].party[2].percentage_voted = votesInd / senate_independents.length;
+    if (votesInd == 0){
+         statistics.glance[0].party[2].percentage_voted = "0";
+    }
 }
+   
 
 
 
@@ -158,7 +161,7 @@ function least_engaged() {
 
         ten_least_engage.push(all_members[x]);
     }
-
+   
     statistics.leastengaged = ten_least_engage;
 }
 
@@ -274,6 +277,4 @@ function tableLeastLoyal() {
 
   
     }
-
-
 
