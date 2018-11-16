@@ -15,9 +15,9 @@ var statistics = {
                     "name": "Independents",
                     "number": 0,
                     "percentage_voted": 0,
-                    
-                     },  
-                    {
+
+                     },
+                {
 
                     "name": "Total",
                     "number": 0,
@@ -59,17 +59,19 @@ most_engaged();
 most_loyal();
 least_loyal();
 glanceTable();
-if (window.location.pathname == "/house_attendance_statistics.html"){
-    
 
-tableMostEngaged();
-tableLeastEngaged();
-    }
 
-if (window.location.pathname == "/house_party_loyality_statistics.html" ){
-tableMostLoyal();
-tableLeastLoyal();
-    }
+if (window.location.pathname == "/house_attendance_statistics.html") {
+
+
+    tableMostEngaged();
+    tableLeastEngaged();
+}
+
+if (window.location.pathname == "/house_party_loyality_statistics.html") {
+    tableMostLoyal();
+    tableLeastLoyal();
+}
 
 
 
@@ -78,7 +80,7 @@ function numberParty() {
     for (var q = 0; q < member.length; q++) {
         all_members.push(member[q]);
     }
-     statistics.glance[0].party[3].number = all_members.length;
+    statistics.glance[0].party[3].number = all_members.length;
 
     //create an array with all the republicans
     for (var x = 0; x < member.length; x++) {
@@ -104,6 +106,7 @@ function numberParty() {
         }
     }
     statistics.glance[0].party[2].number = senate_independents.length;
+    
 
 }
 
@@ -129,25 +132,25 @@ function votesWParty() {
     for (var j = 0; j < senate_independents.length; j++) {
         votesInd = votesInd + senate_independents[j].votes_with_party_pct;
     }
-    
+
     //average total
-     for (var h = 0; h < all_members.length; h++){
+    for (var h = 0; h < all_members.length; h++) {
         votesTotal = votesTotal + all_members[h].votes_with_party_pct;
     }
 
     statistics.glance[0].party[0].percentage_voted = votesDem / senate_democrats.length;
     statistics.glance[0].party[1].percentage_voted = votesRep / senate_republicans.length;
-    if (votesInd == 0){
-         statistics.glance[0].party[2].percentage_voted = "0";
+    if (votesInd == 0) {
+        statistics.glance[0].party[2].percentage_voted = "0";
     }
 
- statistics.glance[0].party[3].percentage_voted = votesTotal / all_members.length;
-    
-    statistics.glance[0].party[0].percentage_voted=statistics.glance[0].party[0].percentage_voted.toFixed(2);
-   statistics.glance[0].party[1].percentage_voted=statistics.glance[0].party[1].percentage_voted.toFixed(2);
-statistics.glance[0].party[3].percentage_voted=statistics.glance[0].party[3].percentage_voted.toFixed(2);
+    statistics.glance[0].party[3].percentage_voted = votesTotal / all_members.length;
 
-   }
+    statistics.glance[0].party[0].percentage_voted = statistics.glance[0].party[0].percentage_voted.toFixed(2);
+    statistics.glance[0].party[1].percentage_voted = statistics.glance[0].party[1].percentage_voted.toFixed(2);
+    statistics.glance[0].party[3].percentage_voted = statistics.glance[0].party[3].percentage_voted.toFixed(2);
+
+}
 
 
 
@@ -155,10 +158,7 @@ statistics.glance[0].party[3].percentage_voted=statistics.glance[0].party[3].per
 //this function creates the way it will sort
 function dynamicSort(property) {
     var sortOrder = 1;
-    if (property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
+   
     return function (a, b) {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
@@ -177,19 +177,33 @@ function least_engaged() {
     //and with this we can call the function to sort it
     all_members.sort(dynamicSort("missed_votes_pct"));
     all_members.reverse();
-    for (var x = 0; x < all_members.length / 10; x++) {
+    for (var x = 0; x < all_members.length; x++) {
 
-        ten_least_engage.push(all_members[x]);
+        if (ten_least_engage.length < all_members.length / 10) {
+
+            ten_least_engage.push(all_members[x]);
+        } else if (ten_least_engage[ten_least_engage.length - 1].missed_votes_pct == all_members[x].missed_votes_pct) {
+            ten_least_engage.push(all_members[x]);
+        } else {
+            break;
+        }
     }
-   
+
     statistics.leastengaged = ten_least_engage;
 }
 
 function most_engaged() {
     all_members.sort(dynamicSort("missed_votes_pct"));
-    for (var x = 0; x < all_members.length / 10; x++) {
+    for (var x = 0; x < all_members.length; x++) {
 
-        ten_most_engaged.push(all_members[x]);
+        if (ten_most_engaged.length < all_members.length / 10) {
+
+            ten_most_engaged.push(all_members[x]);
+        } else if (ten_most_engaged[ten_most_engaged.length - 1].missed_votes_pct == all_members[x].missed_votes_pct) {
+            ten_most_engaged.push(all_members[x]);
+        } else {
+            break;
+        }
     }
 
     statistics.mostengaged = ten_most_engaged;
@@ -198,9 +212,16 @@ function most_engaged() {
 function most_loyal() {
     all_members.sort(dynamicSort("votes_with_party_pct"));
     all_members.reverse();
-    for (var x = 0; x < all_members.length / 10; x++) {
+    for (var x = 0; x < all_members.length; x++) {
 
-        ten_most_loyal.push(all_members[x]);
+        if (ten_most_loyal.length < all_members.length / 10) {
+
+            ten_most_loyal.push(all_members[x]);
+        } else if (ten_most_loyal[ten_most_loyal.length - 1].missed_votes_pct == all_members[x].missed_votes_pct) {
+            ten_most_loyal.push(all_members[x]);
+        } else {
+            break;
+        }
     }
 
     statistics.mostloyal = ten_most_loyal;
@@ -208,9 +229,16 @@ function most_loyal() {
 
 function least_loyal() {
     all_members.sort(dynamicSort("votes_with_party_pct"));
-    for (var x = 0; x < all_members.length / 10; x++) {
+    for (var x = 0; x < all_members.length; x++) {
 
-        ten_least_loyal.push(all_members[x]);
+        if (ten_least_loyal.length < all_members.length / 10) {
+
+            ten_least_loyal.push(all_members[x]);
+        } else if (ten_least_loyal[ten_least_loyal.length - 1].missed_votes_pct == all_members[x].missed_votes_pct) {
+            ten_least_loyal.push(all_members[x]);
+        } else {
+            break;
+        }
     }
 
     statistics.leastloyal = ten_least_loyal;
@@ -264,8 +292,8 @@ function tableLeastEngaged() {
         tbody.append(tr);
 
     }
-    
-   
+
+
 }
 
 function tableMostLoyal() {
@@ -295,6 +323,5 @@ function tableLeastLoyal() {
 
     }
 
-  
-    }
 
+}
