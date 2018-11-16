@@ -15,6 +15,13 @@ var statistics = {
                     "name": "Independents",
                     "number": 0,
                     "percentage_voted": 0,
+                    
+                     },  
+                    {
+
+                    "name": "Total",
+                    "number": 0,
+                    "percentage_voted": 0,
             }]
         }
     ],
@@ -71,7 +78,7 @@ function numberParty() {
     for (var q = 0; q < member.length; q++) {
         all_members.push(member[q]);
     }
-
+     statistics.glance[0].party[3].number = all_members.length;
 
     //create an array with all the republicans
     for (var x = 0; x < member.length; x++) {
@@ -106,6 +113,7 @@ function votesWParty() {
     var votesDem = 0;
     var votesRep = 0;
     var votesInd = 0;
+    var votesTotal = 0;
 
     //average democrats
     for (var x = 0; x < senate_democrats.length; x++) {
@@ -121,14 +129,26 @@ function votesWParty() {
     for (var j = 0; j < senate_independents.length; j++) {
         votesInd = votesInd + senate_independents[j].votes_with_party_pct;
     }
+    
+    //average total
+     for (var h = 0; h < all_members.length; h++){
+        votesTotal = votesTotal + all_members[h].votes_with_party_pct;
+    }
 
     statistics.glance[0].party[0].percentage_voted = votesDem / senate_democrats.length;
     statistics.glance[0].party[1].percentage_voted = votesRep / senate_republicans.length;
     if (votesInd == 0){
          statistics.glance[0].party[2].percentage_voted = "0";
     }
-}
-   
+
+ statistics.glance[0].party[3].percentage_voted = votesTotal / all_members.length;
+    
+    statistics.glance[0].party[0].percentage_voted=statistics.glance[0].party[0].percentage_voted.toFixed(2);
+   statistics.glance[0].party[1].percentage_voted=statistics.glance[0].party[1].percentage_voted.toFixed(2);
+statistics.glance[0].party[3].percentage_voted=statistics.glance[0].party[3].percentage_voted.toFixed(2);
+
+   }
+
 
 
 
