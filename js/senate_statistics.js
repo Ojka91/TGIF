@@ -85,14 +85,14 @@ function init() {
             most_loyal();
             least_loyal();
             glanceTable();
-            if (window.location.pathname == "/senate_attendance_statistics.html") {
+            if (window.location.pathname == "/TGIF/senate_attendance_statistics.html") {
 
 
                 tableEngaged("mostengaged");
                 tableEngaged("leastengaged");
             }
 
-            if (window.location.pathname == "/senate_party_loyality_statistics.html") {
+            if (window.location.pathname == "/TGIF/senate_party_loyality_statistics.html") {
                 tableLoyal("mostloyal");
                 tableLoyal("leastloyal");
             }
