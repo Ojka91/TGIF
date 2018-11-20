@@ -42,7 +42,57 @@ var statistics = {
 
 
 
-var member = data.results[0].members;
+
+fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
+        method: "GET",
+        headers: {
+            'X-API-Key': 'BBuS73wuSHXM16lEeZTuT03wv2m2XivgyFzaMapt'
+        }
+    }).then(function (response) {
+        if (response.ok) {
+
+
+            return response.json()
+        }
+        throw new Error(response.statusText);
+    })
+    .then(function (json) {
+        data = json;
+        member = data.results[0].members;
+
+        function init() {
+            document.getElementById("spinner").style.display = 'none';
+            numberParty();
+            votesWParty();
+            least_engaged();
+            most_engaged();
+            most_loyal();
+            least_loyal();
+            glanceTable();
+            if (window.location.pathname == "/house_attendance_statistics.html") {
+
+
+                tableEngaged("mostengaged");
+                tableEngaged("leastengaged");
+            }
+
+            if (window.location.pathname == "/house_party_loyality_statistics.html") {
+                tableLoyal("mostloyal");
+                tableLoyal("leastloyal");
+            }
+
+        }
+
+        init();
+
+
+    }).catch(function (error) {
+
+        console.log("Request failed " + error.message);
+    });
+
+
+var member;
 var senate_republicans = [];
 var senate_democrats = [];
 var senate_independents = [];
@@ -50,37 +100,16 @@ var all_members = [];
 var ten_least_engage = [];
 var ten_most_engaged = [];
 var ten_most_loyal = [];
-var ten_least_loyal = []
-
-function init() {
-
-    numberParty();
-    votesWParty();
-    least_engaged();
-    most_engaged();
-    most_loyal();
-    least_loyal();
-    glanceTable();
-    if (window.location.pathname == "/house_attendance_statistics.html") {
+var ten_least_loyal = [];
 
 
-        tableEngaged("mostengaged");
-        tableEngaged("leastengaged");
-    }
 
-    if (window.location.pathname == "/house_party_loyality_statistics.html") {
-        tableLoyal("mostloyal");
-        tableLoyal("leastloyal");
-    }
 
-}
-
-init();
 
 
 //creation of the arrays and data
 function numberParty() {
-    
+
     for (var x = 0; x < member.length; x++) {
         all_members.push(member[x]);
         if (member[x].party == "R") {
@@ -288,4 +317,3 @@ function tableLoyal(table) {
 
     }
 }
-

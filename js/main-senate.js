@@ -1,3 +1,30 @@
+fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+        method: "GET",
+        headers: {
+            'X-API-Key': 'BBuS73wuSHXM16lEeZTuT03wv2m2XivgyFzaMapt'
+        }
+    }).then(function (response) {
+        if (response.ok) {
+
+
+            return response.json()
+        }
+        throw new Error(response.statusText);
+    })
+    .then(function (json) {
+        data = json;
+        dropDownStates(data.results[0].members);
+        tableMembers();
+        document.getElementById("spinner").style.display = 'none';
+    }).catch(function (error) {
+
+        console.log("Request failed" + error.message);
+    });
+
+
+
+
+
 //------------------------------------------
 //creation of dropdown menu for filtering
 
@@ -26,7 +53,7 @@ function dropDownStates(array) {
     }
 
 }
-dropDownStates(data.results[0].members);
+//dropDownStates(data.results[0].members);
 
 //------------------------------------------
 
@@ -184,5 +211,4 @@ function tableMembers() {
 
     }
 }
-tableMembers();
-
+//tableMembers();

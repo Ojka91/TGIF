@@ -41,7 +41,7 @@ var statistics = {
 
 
 
-var member = data.results[0].members;
+var member;
 var senate_republicans = [];
 var senate_democrats = [];
 var senate_independents = [];
@@ -52,30 +52,52 @@ var ten_most_loyal = [];
 var ten_least_loyal = []
 
 
-function init() {
-
-    numberParty();
-    votesWParty();
-    least_engaged();
-    most_engaged();
-    most_loyal();
-    least_loyal();
-    glanceTable();
-    if (window.location.pathname == "/senate_attendance_statistics.html") {
+fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+        method: "GET",
+        headers: {
+            'X-API-Key': 'BBuS73wuSHXM16lEeZTuT03wv2m2XivgyFzaMapt'
+        }
+    }).then(function (response) {
+        if (response.ok) {
 
 
-         tableEngaged("mostengaged");
-        tableEngaged("leastengaged");
-    }
+            return response.json()
+        }
+        throw new Error(response.statusText);
+    })
+    .then(function (json) {
+        data = json;
+        member = data.results[0].members;
 
-    if (window.location.pathname == "/senate_party_loyality_statistics.html") {
-        tableLoyal("mostloyal");
-        tableLoyal("leastloyal");
-    }
+        function init() {
+             document.getElementById("spinner").style.display = 'none';
+            numberParty();
+            votesWParty();
+            least_engaged();
+            most_engaged();
+            most_loyal();
+            least_loyal();
+            glanceTable();
+            if (window.location.pathname == "/senate_attendance_statistics.html") {
 
-}
 
-init();
+                tableEngaged("mostengaged");
+                tableEngaged("leastengaged");
+            }
+
+            if (window.location.pathname == "/senate_party_loyality_statistics.html") {
+                tableLoyal("mostloyal");
+                tableLoyal("leastloyal");
+            }
+
+        }
+
+        init();
+     }).catch(function (error) {
+
+        console.log("Request failed " + error.message);
+    });
+
 
 
 //creation of the arrays and data
@@ -284,5 +306,3 @@ function tableLoyal(table) {
 
     }
 }
-
-
