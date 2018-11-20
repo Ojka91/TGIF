@@ -68,8 +68,15 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
     .then(function (json) {
         data = json;
         member = data.results[0].members;
+        init();
+     }).catch(function (error) {
 
-        function init() {
+        console.log("Request failed " + error.message);
+    });
+
+
+
+function init() {
              document.getElementById("spinner").style.display = 'none';
             numberParty();
             votesWParty();
@@ -91,14 +98,6 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
             }
 
         }
-
-        init();
-     }).catch(function (error) {
-
-        console.log("Request failed " + error.message);
-    });
-
-
 
 //creation of the arrays and data
 function numberParty() {

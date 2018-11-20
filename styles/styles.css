@@ -9,9 +9,23 @@ p {
     padding: 0px;
 
 }
+.mail{
+    color: #343a40;
+    font-size: 20px; 
+     text-shadow: 2px 2px 3px white;
+}
 
 .logo {
     height: 100px;
+}
+.header{
+    background-image: url(assets/hhe.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.title{
+    color: #343a40;
+    text-shadow: 4px 4px 7px white;
 }
 
 body {}

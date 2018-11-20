@@ -41,6 +41,16 @@ var statistics = {
 }
 
 
+var member;
+var senate_republicans = [];
+var senate_democrats = [];
+var senate_independents = [];
+var all_members = [];
+var ten_least_engage = [];
+var ten_most_engaged = [];
+var ten_most_loyal = [];
+var ten_least_loyal = [];
+
 
 
 fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
@@ -59,8 +69,19 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
     .then(function (json) {
         data = json;
         member = data.results[0].members;
+        init();
 
-        function init() {
+
+    }).catch(function (error) {
+
+        console.log("Request failed " + error.message);
+    });
+
+
+
+
+
+function init() {
             document.getElementById("spinner").style.display = 'none';
             numberParty();
             votesWParty();
@@ -82,27 +103,6 @@ fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
             }
 
         }
-
-        init();
-
-
-    }).catch(function (error) {
-
-        console.log("Request failed " + error.message);
-    });
-
-
-var member;
-var senate_republicans = [];
-var senate_democrats = [];
-var senate_independents = [];
-var all_members = [];
-var ten_least_engage = [];
-var ten_most_engaged = [];
-var ten_most_loyal = [];
-var ten_least_loyal = [];
-
-
 
 
 
