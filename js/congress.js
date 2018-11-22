@@ -238,7 +238,14 @@ function tableMembers() {
             //deciding if to include the actual TR to the table
             //or not
         }
-
+   
     }
+         var table = document.getElementById("tbody");
+        if (table.rows.length === 0 ){
+            var row = document.createElement("tr");
+            var text = "No members";
+            row.append(text);
+            table.append(row);
+        }
 }
 //tableMembers();
