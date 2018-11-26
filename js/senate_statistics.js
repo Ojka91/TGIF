@@ -69,7 +69,7 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
         data = json;
         member = data.results[0].members;
         init();
-     }).catch(function (error) {
+    }).catch(function (error) {
 
         console.log("Request failed " + error.message);
     });
@@ -77,31 +77,31 @@ fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
 
 
 function init() {
-             document.getElementById("spinner").style.display = 'none';
-            numberParty();
-            votesWParty();
-            least_engaged();
-            most_engaged();
-            most_loyal();
-            least_loyal();
-            glanceTable();
-            if (window.location.pathname == "/TGIF/senate_attendance_statistics.html") {
+    document.getElementById("spinner").style.display = 'none';
+    numberParty();
+    votesWParty();
+    least_engaged();
+    most_engaged();
+    most_loyal();
+    least_loyal();
+    glanceTable();
+    if (window.location.pathname == "/TGIF/senate_attendance_statistics.html") {
 
 
-                tableEngaged("mostengaged");
-                tableEngaged("leastengaged");
-            }
+        tableEngaged("mostengaged");
+        tableEngaged("leastengaged");
+    }
 
-            if (window.location.pathname == "/TGIF/senate_party_loyality_statistics.html") {
-                tableLoyal("mostloyal");
-                tableLoyal("leastloyal");
-            }
+    if (window.location.pathname == "/TGIF/senate_party_loyality_statistics.html") {
+        tableLoyal("mostloyal");
+        tableLoyal("leastloyal");
+    }
 
-        }
+}
 
 //creation of the arrays and data
 function numberParty() {
- 
+
     for (var x = 0; x < member.length; x++) {
         all_members.push(member[x]);
         if (member[x].party == "R") {
@@ -283,7 +283,13 @@ function tableEngaged(table) {
         var tr = document.createElement("tr");
         var tbody = document.getElementById(table);
         member = statistics[table];
-        tr.insertCell().innerHTML = member[x].first_name;
+        var a = document.createElement("a");
+        a.href = member[x].url;
+        a.setAttribute("target", "_blank");
+        var fn = member[x].first_name;
+        var ln = member[x].last_name;
+        a.append(ln + " " + fn);
+        tr.insertCell().append(a);
         tr.insertCell().innerHTML = member[x].missed_votes;
         tr.insertCell().innerHTML = member[x].missed_votes_pct + "%";
         tbody.append(tr);
@@ -297,7 +303,13 @@ function tableLoyal(table) {
         var tr = document.createElement("tr");
         var tbody = document.getElementById(table);
         member = statistics[table];
-        tr.insertCell().innerHTML = member[x].first_name;
+        var a = document.createElement("a");
+        a.href = member[x].url;
+        a.setAttribute("target", "_blank");
+        var fn = member[x].first_name;
+        var ln = member[x].last_name;
+        a.append(ln + " " + fn);
+        tr.insertCell().append(a);
         tr.insertCell().innerHTML = member[x].total_votes;
         tr.insertCell().innerHTML = member[x].votes_with_party_pct + "%";
 
